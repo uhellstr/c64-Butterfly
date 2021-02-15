@@ -14,3 +14,7 @@ It runs allot faster then the old Basic Demo did.
 Compile to PRG with included Makefile
 Example:
 $ make
+
+The Youtube video is still availible at:
+https://www.youtube.com/watch?v=2mOywBhDr94
+
