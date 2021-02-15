@@ -91,16 +91,6 @@ void setdefaultvideomode(void)
 
 }
 
-int randomcolor(int lower, int upper) 
-{ 
-
-    int num = (rand() % (upper - lower + 1)) + lower;     
-    return num; 
-
-} 
-
-
-
 void butterfly(void) 
 {
     unsigned int ca=1024, row=25, col=40;
