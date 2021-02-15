@@ -132,7 +132,6 @@ void butterfly(void)
 
 int main(void) 
 {
-    _randomize();
     setupvideomode();
     introscreen();
     butterfly();
