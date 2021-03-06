@@ -53,6 +53,7 @@ https://www.youtube.com/watch?v=2mOywBhDr94
 #include <peekpoke.h>
 
 unsigned char XSize, YSize;
+int v = 0xD000;	// START OF DISPLAY CHIP
 
 void setupvideomode(void) 
 {
@@ -75,7 +76,7 @@ void introscreen(void)
     gotoxy((XSize/2)-10,YSize/2);
     cprintf("butterfly.\n");
     gotoxy(XSize/4,(YSize/2)+1);
-    cprintf("press any key to continue..");
+    cprintf("press return to continue..");
     getchar();
 
 }
@@ -90,6 +91,15 @@ void setdefaultvideomode(void)
     cursor(1);
 
 }
+
+
+void rasterWait(void) {
+	unsigned char raster;
+	do {
+		raster = PEEK(v + 18);
+	} while (raster < 250 || raster > 252);
+}
+
 
 void butterfly(void) 
 {
@@ -115,6 +125,7 @@ void butterfly(void)
                 POKE(k2,81);POKE(c3,c); POKE(i2,81); POKE(c4,c);
                 POKE(k3,81); POKE(c5,c); POKE(i3,81),POKE(c6,c);
                 POKE(k4,81); POKE(c7,c); POKE(i4,81); POKE(c8,c); 
+                rasterWait();  // Slow down the loop 
             }
         }
     }
